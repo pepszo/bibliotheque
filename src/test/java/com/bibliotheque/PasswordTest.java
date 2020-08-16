@@ -9,7 +9,7 @@ class PasswordTest {
 
     @Test
     void test() {
-        Password p = new Password("123");
+        Password p = new Password("aze");
         p.firstHash();
         System.out.print(p.getHash());
         fail("Not yet implemented");

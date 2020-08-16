@@ -29,22 +29,21 @@ public class Location {
     @Column(name="dateRendu")
     private Date dateRendu;
     
-    @Column(name="etatDebut")
-    private int etatDebut;
-    
     @Column(name="etatRendu")
     private int etatRendu;
-    
-    @Column(name="statut")
-    private int statut;
     
     
     @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name = "idLecteur")
     private Lecteur lecteur;
-    
-    @ManyToMany(mappedBy = "location",fetch = FetchType.LAZY)
-    private Set<Exemplaire> exemplaire = new HashSet<>();
+
+	@ManyToOne(cascade = {CascadeType.MERGE})
+	@JoinColumn(name = "idExemplaire")
+	private Exemplaire exemplaire;
+
+	@ManyToOne(cascade = {CascadeType.MERGE})
+	@JoinColumn(name = "idBibliothecaire")
+	private Bibliothecaire bibliothecaire;
 
     @JsonIgnore
 	public Lecteur getLecteur() {
@@ -87,14 +86,6 @@ public class Location {
 		this.dateRendu = dateRendu;
 	}
 
-	public int getEtatDebut() {
-		return etatDebut;
-	}
-
-	public void setEtatDebut(int etatDebut) {
-		this.etatDebut = etatDebut;
-	}
-
 	public int getEtatRendu() {
 		return etatRendu;
 	}
@@ -103,24 +94,21 @@ public class Location {
 		this.etatRendu = etatRendu;
 	}
 
-	public int getStatut() {
-		return statut;
-	}
-
-	public void setStatut(int statut) {
-		this.statut = statut;
-	}
-
-
-	public Set<Exemplaire> getExemplaire() {
+	public Exemplaire getExemplaire() {
 		return exemplaire;
 	}
 
-	public void setExemplaire(Set<Exemplaire> exemplaire) {
+	public void setExemplaire(Exemplaire exemplaire) {
 		this.exemplaire = exemplaire;
 	}
-    
-    
+
+	public Bibliothecaire getBibliothecaire() {
+		return bibliothecaire;
+	}
+
+	public void setBibliothecaire(Bibliothecaire bibliothecaire) {
+		this.bibliothecaire = bibliothecaire;
+	}
 
 }
 

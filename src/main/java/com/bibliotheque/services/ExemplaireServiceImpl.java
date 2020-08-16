@@ -1,6 +1,8 @@
 package com.bibliotheque.services;
 
+import com.bibliotheque.beans.Edition;
 import com.bibliotheque.beans.Exemplaire;
+import com.bibliotheque.repositories.EditionRepo;
 import com.bibliotheque.repositories.ExemplaireRepo;
 import com.bibliotheque.repositories.OeuvreRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +20,11 @@ public class ExemplaireServiceImpl implements ExemplaireService {
 	private ExemplaireRepo eR;
 	
 	@Autowired
-	private OeuvreRepo oR;
+	private EditionRepo edR;
 
-	public Set<Exemplaire> getAllExemplaireByOeuvre(int id) {
+	public Set<Exemplaire> getAllExemplaireByEdition(int id) {
 		
-		Set<Exemplaire> exemp = new HashSet<Exemplaire>((Collection<Exemplaire>) eR.findByOeuvre(oR.findById(id)));
+		Set<Exemplaire> exemp = new HashSet<Exemplaire>((Collection<Exemplaire>) eR.findByEdition(edR.findById(id)));
 				return exemp;
 	}
 	public Optional<Exemplaire> getExemplaireById(int id) {

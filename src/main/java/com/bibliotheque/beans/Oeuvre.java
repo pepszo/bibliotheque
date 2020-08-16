@@ -27,12 +27,9 @@ public class Oeuvre {
     
     @Column(name="descri")
     private String descri;
-    
-    @ManyToMany(mappedBy = "oeuvre",fetch = FetchType.LAZY)
-    private Set<com.bibliotheque.beans.Edition> edition = new HashSet<>();
-    
-    @OneToMany(mappedBy = "oeuvre", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    public Set<Exemplaire> exemplaire;
+
+	@OneToMany(mappedBy = "oeuvre", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	public Set<Edition> edition;
     
 
 	public int getIdOeuvre() {

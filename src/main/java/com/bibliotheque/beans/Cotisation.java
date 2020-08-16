@@ -55,11 +55,11 @@ public class Cotisation {
 		this.dateFin = dateFin;
 	}
 
-	public com.bibliotheque.beans.Lecteur getLecteur() {
+	public Lecteur getLecteur() {
 		return lecteur;
 	}
 
-	public void setLecteur(com.bibliotheque.beans.Lecteur lecteur) {
+	public void setLecteur(Lecteur lecteur) {
 		this.lecteur = lecteur;
 	}
 

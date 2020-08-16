@@ -27,14 +27,7 @@ public class Bibliotheque {
     
     @OneToMany(mappedBy = "bibliotheque", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Set<Exemplaire> exemp;
-    
-    @ManyToMany(cascade = { CascadeType.MERGE },fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "BibliothequesBibliothecaires", 
-            joinColumns = { @JoinColumn(name = "idBibliotheque") }, 
-            inverseJoinColumns = { @JoinColumn(name = "idBibliothecaire") }
-        )
-    private Set<Bibliothecaire> bibliothecaire = new HashSet<>();
+
 
     @OneToMany(mappedBy = "bibliotheque", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Set<Cotisation> cotisation;
@@ -72,14 +65,6 @@ public class Bibliotheque {
 		this.exemp = exemp;
 	}
 
-	@JsonIgnore
-	public Set<Bibliothecaire> getBibliothecaire() {
-		return bibliothecaire;
-	}
-
-	public void setBibliothecaire(Set<Bibliothecaire> bibliothecaire) {
-		this.bibliothecaire = bibliothecaire;
-	}
 	@JsonIgnore
 	public Set<Cotisation> getCotisation() {
 		return cotisation;

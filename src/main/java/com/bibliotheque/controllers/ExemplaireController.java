@@ -22,7 +22,7 @@ public class ExemplaireController {
 	@GetMapping("/exemplaires/{id}")
 	public Set<Exemplaire> getAllExemplaireByOeuvre(@PathVariable int id){
 		
-		return eSI.getAllExemplaireByOeuvre(id);
+		return eSI.getAllExemplaireByEdition(id);
 	}
 
 }

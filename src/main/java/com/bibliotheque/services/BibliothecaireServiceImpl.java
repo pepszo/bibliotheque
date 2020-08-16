@@ -17,7 +17,7 @@ public class BibliothecaireServiceImpl implements BibliothecaireService{
 	private BibliothecaireRepo bR;
 	
 	public Set<Bibliothecaire> getAllBibliothecaire(){
-		Set<Bibliothecaire> bibliothecaire = new HashSet<Bibliothecaire>((Collection<Bibliothecaire>) bR.findAll());
+		Set<Bibliothecaire> bibliothecaire = new HashSet<>((Collection<Bibliothecaire>) bR.findAll());
 		return bibliothecaire;
 	}
 	
@@ -27,7 +27,7 @@ public class BibliothecaireServiceImpl implements BibliothecaireService{
 	}
 	
 	public Set<Bibliothecaire> getAllBibliothecaireByRole(int role){
-		Set<Bibliothecaire> bibliothecaire = new HashSet<Bibliothecaire>();
+		Set<Bibliothecaire> bibliothecaire = new HashSet<>();
 		if (role == 3) {
 			bibliothecaire = bR.getAllBibliothecaire();
 		}

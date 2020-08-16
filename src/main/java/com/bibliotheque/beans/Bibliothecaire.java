@@ -37,12 +37,14 @@ public class Bibliothecaire {
     
     @Column(name="mdp")
     private String mdp;
-    
-    @Column(name="idRole")
-    private int role;
-    
-    @ManyToMany(mappedBy = "bibliothecaire",fetch = FetchType.LAZY)
-    private Set<com.bibliotheque.beans.Bibliotheque> bibliotheque = new HashSet<>();
+
+	@ManyToOne(cascade = {CascadeType.MERGE})
+	@JoinColumn(name = "idRole")
+	private Role role;
+
+	@ManyToOne(cascade = {CascadeType.MERGE})
+	@JoinColumn(name = "idBibliotheque")
+	private com.bibliotheque.beans.Bibliotheque bibliotheque;
     
 
 	public int getIdBibliothecaire() {
@@ -103,22 +105,20 @@ public class Bibliothecaire {
         this.mdp = p.getHash();
     }
 
-	public int getRole() {
+	public Role getRole() {
 		return role;
 	}
 
-	public void setRole(int role) {
+	public void setRole(Role role) {
 		this.role = role;
 	}
 
-	public Set<com.bibliotheque.beans.Bibliotheque> getBibliotheque() {
+	public Bibliotheque getBibliotheque() {
 		return bibliotheque;
 	}
 
-	public void setBibliotheque(Set<com.bibliotheque.beans.Bibliotheque> bibliotheque) {
+	public void setBibliotheque(Bibliotheque bibliotheque) {
 		this.bibliotheque = bibliotheque;
 	}
-
-    
 }
 

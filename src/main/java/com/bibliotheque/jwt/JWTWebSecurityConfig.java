@@ -65,6 +65,7 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .anyRequest().authenticated();
 
+
        httpSecurity
             .addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
         
@@ -87,7 +88,7 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
             .ignoring()
             .antMatchers(
                 HttpMethod.GET,
-                "/index.html", "/location" //Other Stuff You want to Ignore
+                "/index.html", "/bibliotheque/all", "/bibliotheque/{id}" //Other Stuff You want to Ignore
             )
             .and()
             .ignoring()

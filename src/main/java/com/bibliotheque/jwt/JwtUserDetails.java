@@ -1,5 +1,6 @@
 package com.bibliotheque.jwt;
 
+import com.bibliotheque.beans.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -8,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 public class JwtUserDetails implements UserDetails {
 
@@ -18,21 +20,21 @@ public class JwtUserDetails implements UserDetails {
   private final String password;
   private final Collection<? extends GrantedAuthority> authorities;
 
-  public JwtUserDetails(int id, String username, String password, int role) {
+  public JwtUserDetails(int id, String username, String password, Role role) {
     this.id = id;
     this.username = username;
     this.password = password;
 
     List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
-    
-    String s = String.valueOf(role);
-    String[] roles = s.split(",");
-    for(String r:roles) {
-    	authorities.add(new SimpleGrantedAuthority(r));
-    }
+
+    //String[] roles = s.split(",");
+    //for(Role r:role) {
+      authorities.add(new SimpleGrantedAuthority("ROLE_"+role.getLabel().toUpperCase()));
+    //}
 
     this.authorities = authorities;
   }
+
 
   @JsonIgnore
   public int getId() {
@@ -77,6 +79,8 @@ public class JwtUserDetails implements UserDetails {
   public boolean isEnabled() {
     return true;
   }
+
+
 
 }
 

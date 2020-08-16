@@ -43,8 +43,10 @@ public class Lecteur {
     @OneToMany(mappedBy = "lecteur", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Set<com.bibliotheque.beans.Location> location;
 
-    
-    
+	@ManyToOne(cascade = {CascadeType.MERGE})
+	@JoinColumn(name = "idRole")
+	private Role role;
+
     
 	public Set<com.bibliotheque.beans.Location> getLocation() {
 		return location;
@@ -137,5 +139,11 @@ public class Lecteur {
 		this.cotisation = cotisation;
 	}
 
-    
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
 }

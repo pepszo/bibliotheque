@@ -18,37 +18,19 @@ public class Exemplaire {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "idExemplaire", nullable=false)
     private int idExemplaire;
-
-	@Column(name="titre")
-    private String titre;
-
-    @Column(name="prix")
-    private Float prix;
     
     @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name = "idBibliotheque")
     private com.bibliotheque.beans.Bibliotheque bibliotheque;
     
     @ManyToOne(cascade = {CascadeType.MERGE})
-    @JoinColumn(name = "idOeuvre")
-    private com.bibliotheque.beans.Oeuvre oeuvre;
+    @JoinColumn(name = "idEdition")
+    private Edition edition;
 
-    @ManyToMany(cascade = { CascadeType.MERGE },fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "ExemplairesReserve", 
-            joinColumns = { @JoinColumn(name = "idExemplaire") }, 
-            inverseJoinColumns = { @JoinColumn(name = "idLocation") }
-        )
-    private Set<com.bibliotheque.beans.Location> location = new HashSet<>();
-    
+	@ManyToOne(cascade = {CascadeType.MERGE})
+	@JoinColumn(name = "idEtat")
+	private Etat etat;
 
-	public com.bibliotheque.beans.Oeuvre getOeuvre() {
-		return oeuvre;
-	}
-
-	public void setOeuvre(com.bibliotheque.beans.Oeuvre oeuvre) {
-		this.oeuvre = oeuvre;
-	}
 
 	public int getIdExemplaire() {
 		return idExemplaire;
@@ -58,21 +40,22 @@ public class Exemplaire {
 		this.idExemplaire = idExemplaire;
 	}
 
-	public String getTitre() {
-		return titre;
+	public Edition getEdition() {
+		return edition;
 	}
 
-	public void setTitre(String titre) {
-		this.titre = titre;
+	public void setEdition(Edition edition) {
+		this.edition = edition;
 	}
 
-	public Float getPrix() {
-		return prix;
+	public Etat getEtat() {
+		return etat;
 	}
 
-	public void setPrix(Float prix) {
-		this.prix = prix;
+	public void setEtat(Etat etat) {
+		this.etat = etat;
 	}
+
 	@JsonIgnore
 	public com.bibliotheque.beans.Bibliotheque getBibliotheque() {
 		return bibliotheque;

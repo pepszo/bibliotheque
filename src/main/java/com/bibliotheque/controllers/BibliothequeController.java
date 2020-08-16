@@ -3,26 +3,32 @@ package com.bibliotheque.controllers;
 import com.bibliotheque.beans.Bibliotheque;
 import com.bibliotheque.services.BibliothequeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@RequestMapping(path = "/bibliotheque")
 public class BibliothequeController {
 
 	@Autowired
 	private BibliothequeServiceImpl bSI;
 	
-	@GetMapping("/bibliotheques")
-	public Set<Bibliotheque> allBibliotheque(){
+	@GetMapping("/all")
+	public List<Bibliotheque> allBibliotheque(){
 		return bSI.getAllBibliotheque();
 	}
-	@GetMapping("/bibliotheques/{id}")
-	public Optional<Bibliotheque> getid(@PathVariable int id) {
+
+	@GetMapping("/{id}")
+	public Optional<Bibliotheque> getBibliothequeByid(@PathVariable int id) {
 		Optional<Bibliotheque> biblio = bSI.getBibliothequeById(id);
 		return biblio;
 	}
+
+	@PostMapping("/new")
+	private Bibliotheque newBiblio(@RequestBody Bibliotheque bibliotheque) { return bSI.saveBibliotheque(bibliotheque);}
+
 }

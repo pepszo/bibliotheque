@@ -19,19 +19,18 @@ public class Edition {
     @Column(name= "idEdition", nullable=false)
     private int idEdition;
 
-    @Column(name="nomEdition")
-    private String nomEdition;
+    @Column(name="nomEditeur")
+    private String nomEditeur;
 
     @Column(name="dateEdition")
     private Date dateEdition;
-    
-    @ManyToMany(cascade = { CascadeType.MERGE },fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "EditionsOeuvres", 
-            joinColumns = { @JoinColumn(name = "idEdition") }, 
-            inverseJoinColumns = { @JoinColumn(name = "idOeuvre") }
-        )
-    private Set<Oeuvre> oeuvre = new HashSet<>();
+
+	@OneToMany(mappedBy = "edition", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	public Set<Exemplaire> exemplaire;
+
+	@ManyToOne(cascade = {CascadeType.MERGE})
+	@JoinColumn(name = "idOeuvre")
+	private Oeuvre oeuvre;
 
     
 	public int getIdEdition() {
@@ -42,14 +41,6 @@ public class Edition {
 		this.idEdition = idEdition;
 	}
 
-	public String getNomEdition() {
-		return nomEdition;
-	}
-
-	public void setNomEdition(String nomEdition) {
-		this.nomEdition = nomEdition;
-	}
-
 	public Date getDateEdition() {
 		return dateEdition;
 	}
@@ -58,14 +49,29 @@ public class Edition {
 		this.dateEdition = dateEdition;
 	}
 
-	public Set<Oeuvre> getOeuvre() {
+	public String getNomEditeur() {
+		return nomEditeur;
+	}
+
+	public void setNomEditeur(String nomEditeur) {
+		this.nomEditeur = nomEditeur;
+	}
+
+	public Set<Exemplaire> getExemplaire() {
+		return exemplaire;
+	}
+
+	public void setExemplaire(Set<Exemplaire> exemplaire) {
+		this.exemplaire = exemplaire;
+	}
+
+	public Oeuvre getOeuvre() {
 		return oeuvre;
 	}
 
-	public void setOeuvre(Set<Oeuvre> oeuvre) {
+	public void setOeuvre(Oeuvre oeuvre) {
 		this.oeuvre = oeuvre;
 	}
-    
-    
-    
+
+
 }
