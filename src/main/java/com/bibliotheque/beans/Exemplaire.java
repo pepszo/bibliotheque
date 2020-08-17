@@ -39,7 +39,6 @@ public class Exemplaire {
 	public void setIdExemplaire(int idExemplaire) {
 		this.idExemplaire = idExemplaire;
 	}
-
 	public Edition getEdition() {
 		return edition;
 	}
@@ -64,6 +63,6 @@ public class Exemplaire {
 	public void setBibliotheque(com.bibliotheque.beans.Bibliotheque bibliotheque) {
 		this.bibliotheque = bibliotheque;
 	}
-    
+
     
 }

@@ -1,6 +1,7 @@
 package com.bibliotheque.beans;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
@@ -56,7 +57,7 @@ public class Edition {
 	public void setNomEditeur(String nomEditeur) {
 		this.nomEditeur = nomEditeur;
 	}
-
+	@JsonIgnore
 	public Set<Exemplaire> getExemplaire() {
 		return exemplaire;
 	}

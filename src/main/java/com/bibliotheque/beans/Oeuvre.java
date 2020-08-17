@@ -1,18 +1,13 @@
 package com.bibliotheque.beans;
 
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name ="Oeuvres")
-@JsonIdentityInfo(
-	generator = ObjectIdGenerators.PropertyGenerator.class,
-	property = "idOeuvre")
 public class Oeuvre {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -63,7 +58,7 @@ public class Oeuvre {
 	public void setDescri(String descri) {
 		this.descri = descri;
 	}
-
+	@JsonIgnore
 	public Set<com.bibliotheque.beans.Edition> getEdition() {
 		return edition;
 	}

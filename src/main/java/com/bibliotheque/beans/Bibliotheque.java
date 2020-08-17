@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -26,7 +27,7 @@ public class Bibliotheque {
     private String tel;
     
     @OneToMany(mappedBy = "bibliotheque", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    public Set<Exemplaire> exemp;
+    public List<Exemplaire> exemp;
 
 
     @OneToMany(mappedBy = "bibliotheque", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -56,12 +57,12 @@ public class Bibliotheque {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	
-	public Set<Exemplaire> getExemp() {
+
+	public List<Exemplaire> getExemp() {
 		return exemp;
 	}
 
-	public void setExemp(Set<Exemplaire> exemp) {
+	public void setExemp(List<Exemplaire> exemp) {
 		this.exemp = exemp;
 	}
 
