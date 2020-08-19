@@ -22,4 +22,9 @@ public class EditionController {
 
         return eSI.getAllEditionByOeuvre(id);
     }
+
+    @GetMapping("/all")
+    public List<Edition> getAllEditions(){
+        return eSI.getAllEditions();
+    }
 }

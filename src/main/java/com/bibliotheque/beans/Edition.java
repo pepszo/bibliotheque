@@ -57,7 +57,7 @@ public class Edition {
 	public void setNomEditeur(String nomEditeur) {
 		this.nomEditeur = nomEditeur;
 	}
-	@JsonIgnore
+
 	public Set<Exemplaire> getExemplaire() {
 		return exemplaire;
 	}
