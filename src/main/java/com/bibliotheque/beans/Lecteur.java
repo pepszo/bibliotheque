@@ -11,7 +11,7 @@ import java.util.Set;
 @Table(name ="Lecteurs")
 @JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "idLecteur", scope = com.bibliotheque.beans.Lecteur.class)
+		property = "idLecteur", scope = Lecteur.class)
 public class Lecteur {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

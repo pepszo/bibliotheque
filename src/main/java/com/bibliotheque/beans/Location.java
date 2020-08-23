@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +14,7 @@ import java.util.Set;
 @Table(name ="Locations")
 @JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "idLocation", scope = com.bibliotheque.beans.Location.class)
+		property = "idLocation", scope = Location.class)
 public class Location {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,13 +27,6 @@ public class Location {
     @Column(name="dateFin")
     private Date dateFin;
     
-    @Column(name="dateRendu")
-    private Date dateRendu;
-    
-    @Column(name="etatRendu")
-    private int etatRendu;
-    
-    
     @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name = "idLecteur")
     private Lecteur lecteur;
@@ -40,10 +34,6 @@ public class Location {
 	@ManyToOne(cascade = {CascadeType.MERGE})
 	@JoinColumn(name = "idExemplaire")
 	private Exemplaire exemplaire;
-
-	@ManyToOne(cascade = {CascadeType.MERGE})
-	@JoinColumn(name = "idBibliothecaire")
-	private Bibliothecaire bibliothecaire;
 
     @JsonIgnore
 	public Lecteur getLecteur() {
@@ -66,32 +56,20 @@ public class Location {
 		return dateDebut;
 	}
 
-	public void setDateDebut(Date dateDebut) {
-		this.dateDebut = dateDebut;
+	public void setDateDebut() {
+    	this.dateDebut = new Date();
 	}
 
 	public Date getDateFin() {
 		return dateFin;
 	}
 
-	public void setDateFin(Date dateFin) {
-		this.dateFin = dateFin;
-	}
-
-	public Date getDateRendu() {
-		return dateRendu;
-	}
-
-	public void setDateRendu(Date dateRendu) {
-		this.dateRendu = dateRendu;
-	}
-
-	public int getEtatRendu() {
-		return etatRendu;
-	}
-
-	public void setEtatRendu(int etatRendu) {
-		this.etatRendu = etatRendu;
+	public void setDateFin() {
+    	Date currentDate = new Date();
+		Calendar c = Calendar.getInstance();
+		c.setTime(currentDate);
+		c.add(Calendar.MONTH, 1);
+    	this.dateFin = c.getTime();
 	}
 
 	public Exemplaire getExemplaire() {
@@ -100,14 +78,6 @@ public class Location {
 
 	public void setExemplaire(Exemplaire exemplaire) {
 		this.exemplaire = exemplaire;
-	}
-
-	public Bibliothecaire getBibliothecaire() {
-		return bibliothecaire;
-	}
-
-	public void setBibliothecaire(Bibliothecaire bibliothecaire) {
-		this.bibliothecaire = bibliothecaire;
 	}
 
 }

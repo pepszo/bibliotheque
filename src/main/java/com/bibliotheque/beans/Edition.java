@@ -13,7 +13,8 @@ import java.util.Set;
 @Table(name ="Editions")
 @JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "idEdition")
+		property = "idEdition",
+		scope = Edition.class)
 public class Edition {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -73,6 +74,7 @@ public class Edition {
 	public void setOeuvre(Oeuvre oeuvre) {
 		this.oeuvre = oeuvre;
 	}
+
 
 
 }

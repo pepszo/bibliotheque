@@ -12,8 +12,9 @@ import java.util.Set;
 @Table(name ="Exemplaires")
 @JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "idExemplaire")
-public class Exemplaire {
+		property = "idExemplaire",
+		scope = Exemplaire.class)
+public class Exemplaire implements Comparable<Exemplaire>{
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "idExemplaire", nullable=false)
@@ -21,7 +22,7 @@ public class Exemplaire {
     
     @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name = "idBibliotheque")
-    private com.bibliotheque.beans.Bibliotheque bibliotheque;
+    private Bibliotheque bibliotheque;
     
     @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name = "idEdition")
@@ -39,6 +40,7 @@ public class Exemplaire {
 	public void setIdExemplaire(int idExemplaire) {
 		this.idExemplaire = idExemplaire;
 	}
+
 	public Edition getEdition() {
 		return edition;
 	}
@@ -64,5 +66,12 @@ public class Exemplaire {
 		this.bibliotheque = bibliotheque;
 	}
 
-    
+
+	@Override
+	public int compareTo(Exemplaire o) {
+		if(this.getIdExemplaire() == o.getIdExemplaire()){
+			return 0;
+		}
+		return 1;
+	}
 }

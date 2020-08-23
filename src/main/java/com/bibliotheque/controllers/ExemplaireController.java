@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
+import java.util.TreeMap;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping(path = "bibliotheque/{idBibliotheque}")
+@RequestMapping(path = "/bibliotheque/{idBibliotheque}")
 public class ExemplaireController {
 	
 	@Autowired
@@ -24,9 +24,20 @@ public class ExemplaireController {
 		return eSI.getAllEditionByBiblio(idBibliotheque);
 	}
 
+	@GetMapping("/edition-counts")
+	public List<Integer> getCountsOfExemplaires(@PathVariable int idBibliotheque){
+		return eSI.getCountsOfExemplaires(idBibliotheque);
+	}
+
 	@GetMapping("/edition/{idEdition}")
 	public int getCountOfExemplaireByEdition(@PathVariable int idBibliotheque, @PathVariable int idEdition){
 		return eSI.getCountOfExemplaireByEdition(idBibliotheque, idEdition);
 	}
+
+	@PostMapping("/add-book")
+	private Exemplaire newExemplaire(@RequestBody Exemplaire exemplaire, @PathVariable int idBibliotheque) {
+		return eSI.saveExemplaire(exemplaire, idBibliotheque);
+	}
+
 
 }

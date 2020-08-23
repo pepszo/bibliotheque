@@ -4,13 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.util.Calendar;
 import java.util.Date;
 
 @Entity
 @Table(name ="Cotisations")
 @JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "idCotisation")
+		property = "idCotisation",
+		scope = Cotisation.class)
 public class Cotisation {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,16 +45,20 @@ public class Cotisation {
 		return dateDebut;
 	}
 
-	public void setDateDebut(Date dateDebut) {
-		this.dateDebut = dateDebut;
+	public void setDateDebut() {
+		this.dateDebut = new Date();
 	}
 
 	public Date getDateFin() {
 		return dateFin;
 	}
 
-	public void setDateFin(Date dateFin) {
-		this.dateFin = dateFin;
+	public void setDateFin() {
+		Date currentDate = new Date();
+		Calendar c = Calendar.getInstance();
+		c.setTime(currentDate);
+		c.add(Calendar.YEAR, 1);
+		this.dateFin = c.getTime();
 	}
 
 	public Lecteur getLecteur() {

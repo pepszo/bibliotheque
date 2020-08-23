@@ -13,7 +13,8 @@ import java.util.Set;
 @Table(name ="Bibliothecaires")
 @JsonIdentityInfo(
 		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "idBibliothecaire")
+		property = "idBibliothecaire",
+		scope = Bibliothecaire.class)
 public class Bibliothecaire {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

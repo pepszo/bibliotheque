@@ -1,8 +1,6 @@
 package com.bibliotheque.beans;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -11,7 +9,9 @@ import java.util.Set;
 @Table(name = "Etats")
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "idEtat")
+        property = "idEtat",
+        scope = Etat.class)
+@JsonIgnoreProperties({"exempl"})
 public class Etat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +22,7 @@ public class Etat {
     private String label;
 
     @OneToMany(mappedBy = "etat", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    public Set<Exemplaire> exemplaires;
+    public Set<Exemplaire> exempl;
 
     public int getIdEtat() {
         return idEtat;
@@ -39,12 +39,14 @@ public class Etat {
     public void setLabel(String label) {
         this.label = label;
     }
-    @JsonIgnore
+
+    @JsonProperty("exempl")
     public Set<Exemplaire> getExemplaires() {
-        return exemplaires;
+        return exempl;
     }
 
+    @JsonProperty("exempl")
     public void setExemplaires(Set<Exemplaire> exemplaires) {
-        this.exemplaires = exemplaires;
+        this.exempl = exemplaires;
     }
 }

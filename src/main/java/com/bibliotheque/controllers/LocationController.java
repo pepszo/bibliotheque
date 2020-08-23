@@ -25,12 +25,12 @@ public class LocationController {
 	@PostMapping("/location")
 	public Location addLocation(@RequestBody Location location) {
 		
-		LocalDateTime t = LocalDateTime.now();
+		/*LocalDateTime t = LocalDateTime.now();
 		Date dateLoc = Date.from( t.atZone( ZoneId.systemDefault()).toInstant());
 		Date dateDebutLoc = Date.from( t.atZone( ZoneId.systemDefault()).toInstant().plusSeconds(86400));
-		Date dateFinLoc = Date.from( t.atZone( ZoneId.systemDefault()).toInstant().plusSeconds(2592000));
-		location.setDateDebut(dateDebutLoc);
-		location.setDateFin(dateFinLoc);
+		Date dateFinLoc = Date.from( t.atZone( ZoneId.systemDefault()).toInstant().plusSeconds(2592000));*/
+		location.setDateDebut();
+		location.setDateFin();
 		
 		return lR.save(location);
 	}
