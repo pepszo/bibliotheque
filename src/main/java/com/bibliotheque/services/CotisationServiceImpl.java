@@ -2,13 +2,16 @@ package com.bibliotheque.services;
 
 import com.bibliotheque.beans.Bibliotheque;
 import com.bibliotheque.beans.Cotisation;
+import com.bibliotheque.beans.Lecteur;
 import com.bibliotheque.repositories.BibliothequeRepo;
 import com.bibliotheque.repositories.CotisationRepo;
+import com.bibliotheque.repositories.LecteurRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CotisationServiceImpl implements CotisationService{
@@ -18,6 +21,9 @@ public class CotisationServiceImpl implements CotisationService{
 
     @Autowired
     private BibliothequeRepo bR;
+
+    @Autowired
+    private LecteurRepo lR;
 
     public List<Integer> getPermissionsByLecteur(int idLecteur){
         if(cR.findPermissionsByLecteur(idLecteur) != null)
@@ -39,9 +45,9 @@ public class CotisationServiceImpl implements CotisationService{
         }
     }
 
-    public List<Cotisation> getallCotisationByLecteur(int idLecteur){
-        if(!cR.findAllByLecteur(idLecteur).isEmpty())
-        {
+    public List<String> getallCotisationByLecteur(String emailLecteur){
+        int idLecteur = lR.findiDByEmail(emailLecteur);
+        if (!cR.findAllByLecteur(idLecteur).isEmpty()) {
             return cR.findAllByLecteur(idLecteur);
         }
         return null;

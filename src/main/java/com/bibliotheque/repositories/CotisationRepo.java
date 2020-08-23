@@ -13,7 +13,7 @@ public interface CotisationRepo extends CrudRepository<Cotisation, Integer> {
     @Query(value = "select idBibliotheque from cotisations where idLecteur = ?1", nativeQuery = true)
     List<Integer> findPermissionsByLecteur(int idLecteur);
 
-    @Query(value = "select * from cotisations where idLecteur = ?1", nativeQuery = true)
-    List<Cotisation> findAllByLecteur(int idLecteur);
+    @Query(value = "select idBibliotheque from cotisations where idLecteur = ?1", nativeQuery = true)
+    List<String> findAllByLecteur(int idLecteur);
 
 }

@@ -22,9 +22,10 @@ public class CotisationController {
         return cSI.getPermissionsByLecteur(idLecteur);
     }
 
-    @GetMapping("cotisation/{idLecteur}")
-    private List<Cotisation> getallCotisationByLecteur(@PathVariable int idLecteur) {
-        return cSI.getallCotisationByLecteur(idLecteur);
+    @GetMapping("cotisation/{emailLecteur}")
+    private List<String> getallCotisationByLecteur(@PathVariable String emailLecteur) {
+        System.out.println(emailLecteur);
+        return cSI.getallCotisationByLecteur(emailLecteur);
     }
 
     @PostMapping("{idBibliotheque}/cotisation/new")
