@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Optional;
 
 @Entity
 @Table(name ="Cotisations")
@@ -65,8 +66,8 @@ public class Cotisation {
 		return lecteur;
 	}
 
-	public void setLecteur(Lecteur lecteur) {
-		this.lecteur = lecteur;
+	public void setLecteur(Optional<Lecteur> lecteur) {
+		this.lecteur = lecteur.get();
 	}
 
 	public com.bibliotheque.beans.Bibliotheque getBibliotheque() {

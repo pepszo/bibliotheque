@@ -24,12 +24,13 @@ public class CotisationController {
 
     @GetMapping("cotisation/{emailLecteur}")
     private List<String> getallCotisationByLecteur(@PathVariable String emailLecteur) {
-        System.out.println(emailLecteur);
         return cSI.getallCotisationByLecteur(emailLecteur);
     }
 
-    @PostMapping("{idBibliotheque}/cotisation/new")
-    private Cotisation newCotisation(@RequestBody Cotisation cotisation, @PathVariable int idBibliotheque) { return cSI.saveCotisation(cotisation, idBibliotheque);}
+    @PostMapping("cotisation/new")
+    private Cotisation newCotisation(@RequestParam String emailLecteur, int idBibliotheque) {
+        return cSI.saveCotisation(emailLecteur, idBibliotheque);
+    }
 
 
 }

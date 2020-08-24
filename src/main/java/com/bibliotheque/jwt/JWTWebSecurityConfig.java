@@ -88,7 +88,7 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
             .ignoring()
             .antMatchers(
                 HttpMethod.GET,
-                "/index.html", "/bibliotheque/all", "/bibliotheque/{id}", "/bibliotheque/{idBibliotheque}/edition", "/bibliotheque/{idBibliotheque}/edition/{idEdition}" //Other Stuff You want to Ignore
+                "/index.html", "/bibliotheque/all", "/bibliotheque/{id}", "/bibliotheque/{idBibliotheque}/edition", "/bibliotheque/{idBibliotheque}/edition/{idEdition}", "/bibliotheque/{idBibliotheque}/edition-counts" //Other Stuff You want to Ignore
             )
             .and()
             .ignoring()

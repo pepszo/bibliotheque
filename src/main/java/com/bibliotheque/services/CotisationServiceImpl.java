@@ -33,9 +33,15 @@ public class CotisationServiceImpl implements CotisationService{
         return null;
     }
 
-    public Cotisation saveCotisation(Cotisation cotisation, int idBibliotheque){
+    public Cotisation saveCotisation(String emailLecteur, int idBibliotheque){
         Bibliotheque b = bR.findById(idBibliotheque).get();
+
+        Optional<Lecteur> l;
+        l = lR.findByEmail(emailLecteur);
+
+        Cotisation cotisation = new Cotisation();
         cotisation.setBibliotheque(b);
+        cotisation.setLecteur(l);
         cotisation.setDateDebut();
         cotisation.setDateFin();
         try{
