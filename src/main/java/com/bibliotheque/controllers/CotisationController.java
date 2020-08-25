@@ -1,6 +1,5 @@
 package com.bibliotheque.controllers;
 
-import com.bibliotheque.beans.Bibliotheque;
 import com.bibliotheque.beans.Cotisation;
 import com.bibliotheque.services.CotisationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

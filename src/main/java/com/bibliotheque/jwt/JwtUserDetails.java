@@ -29,9 +29,8 @@ public class JwtUserDetails implements UserDetails {
 
     //String[] roles = s.split(",");
     //for(Role r:role) {
-      authorities.add(new SimpleGrantedAuthority("ROLE_"+role.getLabel().toUpperCase()));
+    authorities.add(new SimpleGrantedAuthority("ROLE_"+role.getLabel().toUpperCase()));
     //}
-
     this.authorities = authorities;
   }
 
@@ -79,9 +78,6 @@ public class JwtUserDetails implements UserDetails {
   public boolean isEnabled() {
     return true;
   }
-
-
-
 }
 
 
