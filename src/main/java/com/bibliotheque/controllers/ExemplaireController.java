@@ -12,29 +12,34 @@ import java.util.TreeMap;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping(path = "/bibliotheque/{idBibliotheque}")
+@RequestMapping(path = "/bibliotheque/")
 public class ExemplaireController {
 	
 	@Autowired
 	private ExemplaireServiceImpl eSI;
 
 
-	@GetMapping("/edition")
+	@GetMapping("{idBibliotheque}/edition")
 	public List<Edition> getAllEditionByBiblio(@PathVariable int idBibliotheque){
 		return eSI.getAllEditionByBiblio(idBibliotheque);
 	}
 
-	@GetMapping("/edition-counts")
+	@GetMapping("{idBibliotheque}/edition-counts")
 	public List<Integer> getCountsOfExemplaires(@PathVariable int idBibliotheque){
 		return eSI.getCountsOfExemplaires(idBibliotheque);
 	}
 
-	@GetMapping("/edition/{idEdition}")
+	@GetMapping("{idBibliotheque}/edition/{idEdition}")
 	public int getCountOfExemplaireByEdition(@PathVariable int idBibliotheque, @PathVariable int idEdition){
 		return eSI.getCountOfExemplaireByEdition(idBibliotheque, idEdition);
 	}
 
-	@PostMapping("/add-book")
+	@GetMapping("/exemplaire")
+	public Exemplaire getOneExemplaireByEdition(@RequestParam String idEdition){
+		return eSI.getOneExemplaireByEdition(idEdition);
+	}
+
+	@PostMapping("{idBibliotheque}/add-book")
 	private Exemplaire newExemplaire(@RequestBody Exemplaire exemplaire, @PathVariable int idBibliotheque) {
 		return eSI.saveExemplaire(exemplaire, idBibliotheque);
 	}

@@ -48,5 +48,9 @@ public class ExemplaireServiceImpl implements ExemplaireService {
 		exemplaire.setBibliotheque(b);
 		return eR.save(exemplaire);
 	}
+
+	public Exemplaire getOneExemplaireByEdition(String idEdition) {
+		return eR.findOneExemplaireByEdition(idEdition);
+	}
 }
 
