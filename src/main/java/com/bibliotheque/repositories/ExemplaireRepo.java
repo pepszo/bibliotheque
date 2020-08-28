@@ -26,6 +26,6 @@ public interface ExemplaireRepo extends CrudRepository<Exemplaire, Integer> {
 	@Query("SELECT e FROM Exemplaire e WHERE e.bibliotheque.idBibliotheque = ?1 and e.edition.idEdition = ?2")
 	int findExemplaireByEdition(int idBibliotheque, int idEdition);
 
-	@Query(value = "SELECT e.* FROM exemplaires AS e, locations AS l where e.idExemplaire not like l.idExemplaire and idEdition = ?1 limit 1", nativeQuery = true)
+	@Query(value = "SELECT e.* FROM exemplaires AS e, locations AS l where e.idExemplaire not in (select idExemplaire from locations) and idEdition = ?1 limit 1", nativeQuery = true)
 	Exemplaire findOneExemplaireByEdition(String idEdition);
 }

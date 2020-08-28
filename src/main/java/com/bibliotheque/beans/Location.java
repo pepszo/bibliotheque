@@ -5,10 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name ="Locations")
@@ -79,6 +76,8 @@ public class Location {
 	public void setExemplaire(Exemplaire exemplaire) {
 		this.exemplaire = exemplaire;
 	}
+
+
 
 }
 
