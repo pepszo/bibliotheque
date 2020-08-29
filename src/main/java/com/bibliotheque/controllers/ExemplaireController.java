@@ -25,7 +25,7 @@ public class ExemplaireController {
 	}
 
 	@GetMapping("{idBibliotheque}/edition-counts")
-	public List<Integer> getCountsOfExemplaires(@PathVariable int idBibliotheque){
+	public List<Object> getCountsOfExemplaires(@PathVariable int idBibliotheque){
 		return eSI.getCountsOfExemplaires(idBibliotheque);
 	}
 

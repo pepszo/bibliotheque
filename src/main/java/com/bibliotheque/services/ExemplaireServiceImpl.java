@@ -29,7 +29,8 @@ public class ExemplaireServiceImpl implements ExemplaireService {
 		return eR.findEditionByBiblio(idBibliotheque);
 	}
 
-	public List<Integer> getCountsOfExemplaires(int idBibliotheque) {
+	public List<Object> getCountsOfExemplaires(int idBibliotheque) {
+		System.out.println(eR.findCountOfExemplaires(idBibliotheque));
 		return eR.findCountOfExemplaires(idBibliotheque);
 	}
 

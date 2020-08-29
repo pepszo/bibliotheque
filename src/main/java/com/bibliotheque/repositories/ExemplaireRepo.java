@@ -20,8 +20,8 @@ public interface ExemplaireRepo extends CrudRepository<Exemplaire, Integer> {
 	@Query("SELECT count(e.idExemplaire)  FROM Exemplaire e WHERE e.bibliotheque.idBibliotheque = ?1 and e.edition.idEdition = ?2")
 	int findCountOfExemplaireByEdition(int idBibliotheque, int idEdition);
 
-	@Query(value = "SELECT count(*)  FROM exemplaires e WHERE e.idBibliotheque = ?1 and e.idExemplaire not in (select idExemplaire from locations) group by e.idEdition order by e.idEdition", nativeQuery = true)
-	List<Integer> findCountOfExemplaires(int idBibliotheque);
+	@Query(value = "SELECT idEdition,count(*)  FROM exemplaires e WHERE e.idBibliotheque = ?1 and e.idExemplaire not in (select idExemplaire from locations) group by e.idEdition order by e.idEdition", nativeQuery = true)
+	List<Object> findCountOfExemplaires(int idBibliotheque);
 
 	@Query("SELECT e FROM Exemplaire e WHERE e.bibliotheque.idBibliotheque = ?1 and e.edition.idEdition = ?2")
 	int findExemplaireByEdition(int idBibliotheque, int idEdition);
