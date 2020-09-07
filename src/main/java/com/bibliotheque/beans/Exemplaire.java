@@ -9,69 +9,69 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name ="Exemplaires")
+@Table(name = "Exemplaires")
 @JsonIdentityInfo(
-		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "idExemplaire",
-		scope = Exemplaire.class)
-public class Exemplaire implements Comparable<Exemplaire>{
-	@Id
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idExemplaire",
+        scope = Exemplaire.class)
+public class Exemplaire implements Comparable<Exemplaire> {
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "idExemplaire", nullable=false)
+    @Column(name = "idExemplaire", nullable = false)
     private int idExemplaire;
-    
+
     @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name = "idBibliotheque")
     private Bibliotheque bibliotheque;
-    
+
     @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name = "idEdition")
     private Edition edition;
 
-	@ManyToOne(cascade = {CascadeType.MERGE})
-	@JoinColumn(name = "idEtat")
-	private Etat etat;
+    @ManyToOne(cascade = {CascadeType.MERGE})
+    @JoinColumn(name = "idEtat")
+    private Etat etat;
 
 
-	public int getIdExemplaire() {
-		return idExemplaire;
-	}
+    public int getIdExemplaire() {
+        return idExemplaire;
+    }
 
-	public void setIdExemplaire(int idExemplaire) {
-		this.idExemplaire = idExemplaire;
-	}
+    public void setIdExemplaire(int idExemplaire) {
+        this.idExemplaire = idExemplaire;
+    }
 
-	public Edition getEdition() {
-		return edition;
-	}
+    public Edition getEdition() {
+        return edition;
+    }
 
-	public void setEdition(Edition edition) {
-		this.edition = edition;
-	}
+    public void setEdition(Edition edition) {
+        this.edition = edition;
+    }
 
-	public Etat getEtat() {
-		return etat;
-	}
+    public Etat getEtat() {
+        return etat;
+    }
 
-	public void setEtat(Etat etat) {
-		this.etat = etat;
-	}
+    public void setEtat(Etat etat) {
+        this.etat = etat;
+    }
 
-	@JsonIgnore
-	public com.bibliotheque.beans.Bibliotheque getBibliotheque() {
-		return bibliotheque;
-	}
+    @JsonIgnore
+    public com.bibliotheque.beans.Bibliotheque getBibliotheque() {
+        return bibliotheque;
+    }
 
-	public void setBibliotheque(com.bibliotheque.beans.Bibliotheque bibliotheque) {
-		this.bibliotheque = bibliotheque;
-	}
+    public void setBibliotheque(com.bibliotheque.beans.Bibliotheque bibliotheque) {
+        this.bibliotheque = bibliotheque;
+    }
 
 
-	@Override
-	public int compareTo(Exemplaire o) {
-		if(this.getIdExemplaire() == o.getIdExemplaire()){
-			return 0;
-		}
-		return 1;
-	}
+    @Override
+    public int compareTo(Exemplaire o) {
+        if (this.getIdExemplaire() == o.getIdExemplaire()) {
+            return 0;
+        }
+        return 1;
+    }
 }

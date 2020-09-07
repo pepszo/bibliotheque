@@ -7,18 +7,14 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Etats")
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "idEtat",
-        scope = Etat.class)
 @JsonIgnoreProperties({"exempl"})
 public class Etat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "idEtat", nullable=false)
+    @Column(name = "idEtat", nullable = false)
     private int idEtat;
 
-    @Column(name="label")
+    @Column(name = "label")
     private String label;
 
     @OneToMany(mappedBy = "etat", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

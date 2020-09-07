@@ -18,13 +18,13 @@ public class EditionController {
     private EditionServiceImpl eSI;
 
     @GetMapping("/{id}")
-    public List<Edition> getAllEditionsByOeuvre(@PathVariable int id){
+    public List<Edition> getAllEditionsByOeuvre(@PathVariable int id) {
 
         return eSI.getAllEditionByOeuvre(id);
     }
 
     @GetMapping("/all")
-    public List<Edition> getAllEditions(){
+    public List<Edition> getAllEditions() {
         return eSI.getAllEditions();
     }
 }

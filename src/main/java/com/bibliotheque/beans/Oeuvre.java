@@ -7,65 +7,66 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name ="Oeuvres")
+@Table(name = "Oeuvres")
 public class Oeuvre {
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "idOeuvre", nullable=false)
+    @Column(name = "idOeuvre", nullable = false)
     private int idOeuvre;
 
-    @Column(name="isbn")
+    @Column(name = "isbn")
     private String isbn;
 
-    @Column(name="titre")
+    @Column(name = "titre")
     private String titre;
-    
-    @Column(name="descri")
+
+    @Column(name = "descri")
     private String descri;
 
-	@OneToMany(mappedBy = "oeuvre", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	public Set<Edition> edition;
-    
+    @OneToMany(mappedBy = "oeuvre", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    public Set<Edition> edition;
 
-	public int getIdOeuvre() {
-		return idOeuvre;
-	}
 
-	public void setIdOeuvre(int idOeuvre) {
-		this.idOeuvre = idOeuvre;
-	}
+    public int getIdOeuvre() {
+        return idOeuvre;
+    }
 
-	public String getIsbn() {
-		return isbn;
-	}
+    public void setIdOeuvre(int idOeuvre) {
+        this.idOeuvre = idOeuvre;
+    }
 
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
+    public String getIsbn() {
+        return isbn;
+    }
 
-	public String getTitre() {
-		return titre;
-	}
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
 
-	public void setTitre(String titre) {
-		this.titre = titre;
-	}
+    public String getTitre() {
+        return titre;
+    }
 
-	public String getDescri() {
-		return descri;
-	}
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
 
-	public void setDescri(String descri) {
-		this.descri = descri;
-	}
-	@JsonIgnore
-	public Set<com.bibliotheque.beans.Edition> getEdition() {
-		return edition;
-	}
+    public String getDescri() {
+        return descri;
+    }
 
-	public void setEdition(Set<com.bibliotheque.beans.Edition> edition) {
-		this.edition = edition;
-	}
-    
-    
+    public void setDescri(String descri) {
+        this.descri = descri;
+    }
+
+    @JsonIgnore
+    public Set<com.bibliotheque.beans.Edition> getEdition() {
+        return edition;
+    }
+
+    public void setEdition(Set<com.bibliotheque.beans.Edition> edition) {
+        this.edition = edition;
+    }
+
+
 }

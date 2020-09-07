@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CotisationServiceImpl implements CotisationService{
+public class CotisationServiceImpl implements CotisationService {
 
     @Autowired
     private CotisationRepo cR;
@@ -25,15 +25,14 @@ public class CotisationServiceImpl implements CotisationService{
     @Autowired
     private LecteurRepo lR;
 
-    public List<Integer> getPermissionsByLecteur(int idLecteur){
-        if(cR.findPermissionsByLecteur(idLecteur) != null)
-        {
+    public List<Integer> getPermissionsByLecteur(int idLecteur) {
+        if (cR.findPermissionsByLecteur(idLecteur) != null) {
             return cR.findPermissionsByLecteur(idLecteur);
         }
         return null;
     }
 
-    public Cotisation saveCotisation(String emailLecteur, int idBibliotheque){
+    public Cotisation saveCotisation(String emailLecteur, int idBibliotheque) {
         Bibliotheque b = bR.findById(idBibliotheque).get();
 
         Optional<Lecteur> l;
@@ -44,14 +43,14 @@ public class CotisationServiceImpl implements CotisationService{
         cotisation.setLecteur(l);
         cotisation.setDateDebut();
         cotisation.setDateFin();
-        try{
+        try {
             return cR.save(cotisation);
-        }catch (DataIntegrityViolationException e){
+        } catch (DataIntegrityViolationException e) {
             throw new DataIntegrityViolationException("La cotisation est déjà payé!");
         }
     }
 
-    public List<String> getallCotisationByLecteur(String emailLecteur){
+    public List<String> getallCotisationByLecteur(String emailLecteur) {
         int idLecteur = lR.findiDByEmail(emailLecteur);
         if (!cR.findAllByLecteur(idLecteur).isEmpty()) {
             return cR.findAllByLecteur(idLecteur);

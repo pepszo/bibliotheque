@@ -10,72 +10,71 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name ="Bibliotheques")
+@Table(name = "Bibliotheques")
 @JsonIdentityInfo(
-		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "idBibliotheque",
-		scope = Bibliotheque.class)
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idBibliotheque",
+        scope = Bibliotheque.class)
 public class Bibliotheque {
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "idBibliotheque", nullable=false)
+    @Column(name = "idBibliotheque", nullable = false)
     private int idBibliotheque;
 
-    @Column(name="adresse")
+    @Column(name = "adresse")
     private String adresse;
 
-    @Column(name="tel")
+    @Column(name = "tel")
     private String tel;
-    
+
     @OneToMany(mappedBy = "bibliotheque", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public List<Exemplaire> exemp;
 
 
     @OneToMany(mappedBy = "bibliotheque", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Set<Cotisation> cotisation;
-    
-    
-	public int getIdBibliotheque() {
-		return idBibliotheque;
-	}
 
-	public void setIdBibliotheque(int idBibliotheque) {
-		this.idBibliotheque = idBibliotheque;
-	}
 
-	public String getAdresse() {
-		return adresse;
-	}
+    public int getIdBibliotheque() {
+        return idBibliotheque;
+    }
 
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
-	}
+    public void setIdBibliotheque(int idBibliotheque) {
+        this.idBibliotheque = idBibliotheque;
+    }
 
-	public String getTel() {
-		return tel;
-	}
+    public String getAdresse() {
+        return adresse;
+    }
 
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
 
-	public List<Exemplaire> getExemp() {
-		return exemp;
-	}
+    public String getTel() {
+        return tel;
+    }
 
-	public void setExemp(List<Exemplaire> exemp) {
-		this.exemp = exemp;
-	}
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
 
-	@JsonIgnore
-	public Set<Cotisation> getCotisation() {
-		return cotisation;
-	}
+    public List<Exemplaire> getExemp() {
+        return exemp;
+    }
 
-	public void setCotisation(Set<Cotisation> cotisation) {
-		this.cotisation = cotisation;
-	}    
-    
-    
+    public void setExemp(List<Exemplaire> exemp) {
+        this.exemp = exemp;
+    }
+
+    @JsonIgnore
+    public Set<Cotisation> getCotisation() {
+        return cotisation;
+    }
+
+    public void setCotisation(Set<Cotisation> cotisation) {
+        this.cotisation = cotisation;
+    }
+
 
 }

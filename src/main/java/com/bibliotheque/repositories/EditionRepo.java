@@ -10,5 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface EditionRepo extends CrudRepository<Edition, Integer> {
-     List<Edition> findByOeuvre(int id);
+    List<Edition> findByOeuvre(int id);
 }

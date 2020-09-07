@@ -19,7 +19,7 @@ public class EtatController {
     private EtatServiceImpl eSI;
 
     @GetMapping("/all")
-    public List<Etat> allEtats(){
+    public List<Etat> allEtats() {
         return eSI.getAllEtats();
     }
 }

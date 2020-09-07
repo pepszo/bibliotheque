@@ -19,23 +19,23 @@ import java.util.Set;
 @RestController
 @RequestMapping(path = "/location")
 public class LocationController {
-	
-	@Autowired
-	private LocationServiceImpl lSI;
-	
-	@PostMapping("/new")
-	public List<Location> addLocation(@RequestBody List<Integer> idExemplaires, @RequestParam String email) {
-		return lSI.saveLocations(idExemplaires, email);
-	}
-	
-	@GetMapping("/location")
-	public Set<Location> getAllLocation(){
-		return lSI.getAllLocation();
-	}
-	
-	@GetMapping("/location/{id}")
-	public Optional<Location> geLocationtById(@PathVariable int id) {
-		Optional<Location> location = lSI.getLocationById(id);
-		return location;
-	}
+
+    @Autowired
+    private LocationServiceImpl lSI;
+
+    @PostMapping("/new")
+    public List<Location> addLocation(@RequestBody List<Integer> idExemplaires, @RequestParam String email) {
+        return lSI.saveLocations(idExemplaires, email);
+    }
+
+    @GetMapping("/location")
+    public Set<Location> getAllLocation() {
+        return lSI.getAllLocation();
+    }
+
+    @GetMapping("/location/{id}")
+    public Optional<Location> geLocationtById(@PathVariable int id) {
+        Optional<Location> location = lSI.getLocationById(id);
+        return location;
+    }
 }

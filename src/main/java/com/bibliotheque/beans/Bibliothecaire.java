@@ -10,116 +10,116 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name ="Bibliothecaires")
+@Table(name = "Bibliothecaires")
 @JsonIdentityInfo(
-		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "idBibliothecaire",
-		scope = Bibliothecaire.class)
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idBibliothecaire",
+        scope = Bibliothecaire.class)
 public class Bibliothecaire {
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "idBibliothecaire", nullable=false)
+    @Column(name = "idBibliothecaire", nullable = false)
     private int idBibliothecaire;
 
-    @Column(name="nom")
+    @Column(name = "nom")
     private String nom;
 
-    @Column(name="prenom")
+    @Column(name = "prenom")
     private String prenom;
 
-    @Column(name="adresse")
+    @Column(name = "adresse")
     private String adresse;
-    
-    @Column(name="dateN")
+
+    @Column(name = "dateN")
     private Date dateN;
-    
-    @Column(name="email")
+
+    @Column(name = "email")
     private String email;
-    
-    @Column(name="mdp")
+
+    @Column(name = "mdp")
     private String mdp;
 
-	@ManyToOne(cascade = {CascadeType.MERGE})
-	@JoinColumn(name = "idRole")
-	private Role role;
+    @ManyToOne(cascade = {CascadeType.MERGE})
+    @JoinColumn(name = "idRole")
+    private Role role;
 
-	@ManyToOne(cascade = {CascadeType.MERGE})
-	@JoinColumn(name = "idBibliotheque")
-	private com.bibliotheque.beans.Bibliotheque bibliotheque;
-    
+    @ManyToOne(cascade = {CascadeType.MERGE})
+    @JoinColumn(name = "idBibliotheque")
+    private com.bibliotheque.beans.Bibliotheque bibliotheque;
 
-	public int getIdBibliothecaire() {
-		return idBibliothecaire;
-	}
 
-	public void setIdBibliothecaire(int idBibliothecaire) {
-		this.idBibliothecaire = idBibliothecaire;
-	}
+    public int getIdBibliothecaire() {
+        return idBibliothecaire;
+    }
 
-	public String getNom() {
-		return nom;
-	}
+    public void setIdBibliothecaire(int idBibliothecaire) {
+        this.idBibliothecaire = idBibliothecaire;
+    }
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+    public String getNom() {
+        return nom;
+    }
 
-	public String getPrenom() {
-		return prenom;
-	}
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
 
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
+    public String getPrenom() {
+        return prenom;
+    }
 
-	public String getAdresse() {
-		return adresse;
-	}
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
 
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
-	}
+    public String getAdresse() {
+        return adresse;
+    }
 
-	public Date getDateN() {
-		return dateN;
-	}
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
 
-	public void setDateN(Date dateN) {
-		this.dateN = dateN;
-	}
+    public Date getDateN() {
+        return dateN;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setDateN(Date dateN) {
+        this.dateN = dateN;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getMdp() {
-		return mdp;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setMdp(String mdp) {
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
         Password p = new Password(mdp);
         p.firstHash();
         this.mdp = p.getHash();
     }
 
-	public Role getRole() {
-		return role;
-	}
+    public Role getRole() {
+        return role;
+    }
 
-	public void setRole(Role role) {
-		this.role = role;
-	}
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
-	public Bibliotheque getBibliotheque() {
-		return bibliotheque;
-	}
+    public Bibliotheque getBibliotheque() {
+        return bibliotheque;
+    }
 
-	public void setBibliotheque(Bibliotheque bibliotheque) {
-		this.bibliotheque = bibliotheque;
-	}
+    public void setBibliotheque(Bibliotheque bibliotheque) {
+        this.bibliotheque = bibliotheque;
+    }
 }
 

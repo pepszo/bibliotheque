@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table (name ="Mg")
+@Table(name = "Mg")
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "idMg")
@@ -15,25 +15,25 @@ public class Mg {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "idMg", nullable=false)
+    @Column(name = "idMg", nullable = false)
     private int idMg;
 
-    @Column(name="nom")
+    @Column(name = "nom")
     private String nom;
 
-    @Column(name="prenom")
+    @Column(name = "prenom")
     private String prenom;
 
-    @Column(name="adresse")
+    @Column(name = "adresse")
     private String adresse;
 
-    @Column(name="dateN")
+    @Column(name = "dateN")
     private Date dateN;
 
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
 
-    @Column(name="mdp")
+    @Column(name = "mdp")
     private String mdp;
 
     @OneToOne(cascade = {CascadeType.MERGE})

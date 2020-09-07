@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-public class EtatServiceImpl implements EtatService{
+public class EtatServiceImpl implements EtatService {
 
     @Autowired
     private EtatRepo eR;

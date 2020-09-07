@@ -8,75 +8,74 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
-@Table(name ="Locations")
+@Table(name = "Locations")
 @JsonIdentityInfo(
-		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "idLocation", scope = Location.class)
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idLocation", scope = Location.class)
 public class Location {
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "idLocation", nullable=false)
+    @Column(name = "idLocation", nullable = false)
     private int idLocation;
 
-    @Column(name="dateDebut")
+    @Column(name = "dateDebut")
     private Date dateDebut;
 
-    @Column(name="dateFin")
+    @Column(name = "dateFin")
     private Date dateFin;
-    
+
     @ManyToOne(cascade = {CascadeType.MERGE})
     @JoinColumn(name = "idLecteur")
     private Lecteur lecteur;
 
-	@ManyToOne(cascade = {CascadeType.MERGE})
-	@JoinColumn(name = "idExemplaire")
-	private Exemplaire exemplaire;
+    @ManyToOne(cascade = {CascadeType.MERGE})
+    @JoinColumn(name = "idExemplaire")
+    private Exemplaire exemplaire;
 
     @JsonIgnore
-	public Lecteur getLecteur() {
-		return lecteur;
-	}
-    
-	public void setLecteur(Lecteur lecteur) {
-		this.lecteur = lecteur;
-	}
+    public Lecteur getLecteur() {
+        return lecteur;
+    }
 
-	public int getIdLocation() {
-		return idLocation;
-	}
+    public void setLecteur(Lecteur lecteur) {
+        this.lecteur = lecteur;
+    }
 
-	public void setIdLocation(int idLocation) {
-		this.idLocation = idLocation;
-	}
+    public int getIdLocation() {
+        return idLocation;
+    }
 
-	public Date getDateDebut() {
-		return dateDebut;
-	}
+    public void setIdLocation(int idLocation) {
+        this.idLocation = idLocation;
+    }
 
-	public void setDateDebut() {
-    	this.dateDebut = new Date();
-	}
+    public Date getDateDebut() {
+        return dateDebut;
+    }
 
-	public Date getDateFin() {
-		return dateFin;
-	}
+    public void setDateDebut() {
+        this.dateDebut = new Date();
+    }
 
-	public void setDateFin() {
-    	Date currentDate = new Date();
-		Calendar c = Calendar.getInstance();
-		c.setTime(currentDate);
-		c.add(Calendar.MONTH, 1);
-    	this.dateFin = c.getTime();
-	}
+    public Date getDateFin() {
+        return dateFin;
+    }
 
-	public Exemplaire getExemplaire() {
-		return exemplaire;
-	}
+    public void setDateFin() {
+        Date currentDate = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(currentDate);
+        c.add(Calendar.MONTH, 1);
+        this.dateFin = c.getTime();
+    }
 
-	public void setExemplaire(Exemplaire exemplaire) {
-		this.exemplaire = exemplaire;
-	}
+    public Exemplaire getExemplaire() {
+        return exemplaire;
+    }
 
+    public void setExemplaire(Exemplaire exemplaire) {
+        this.exemplaire = exemplaire;
+    }
 
 
 }

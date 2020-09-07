@@ -18,40 +18,41 @@ import java.util.*;
 @Service
 public class ExemplaireServiceImpl implements ExemplaireService {
 
-	@Autowired
-	private ExemplaireRepo eR;
+    @Autowired
+    private ExemplaireRepo eR;
 
-	@Autowired
-	private BibliothequeRepo bR;
+    @Autowired
+    private BibliothequeRepo bR;
 
 
-	public List<Edition> getAllEditionByBiblio(int idBibliotheque) {
-		return eR.findEditionByBiblio(idBibliotheque);
-	}
+    public List<Edition> getAllEditionByBiblio(int idBibliotheque) {
+        return eR.findEditionByBiblio(idBibliotheque);
+    }
 
-	public List<Object> getCountsOfExemplaires(int idBibliotheque) {
-		System.out.println(eR.findCountOfExemplaires(idBibliotheque));
-		return eR.findCountOfExemplaires(idBibliotheque);
-	}
+    public List<Object> getCountsOfExemplaires(int idBibliotheque) {
+        System.out.println(eR.findCountOfExemplaires(idBibliotheque));
+        return eR.findCountOfExemplaires(idBibliotheque);
+    }
 
-	public int getCountOfExemplaireByEdition(int idBibliotheque, int idEdition) {
-		int count = eR.findCountOfExemplaireByEdition(idBibliotheque, idEdition);
-		return count;
-	}
+    public int getCountOfExemplaireByEdition(int idBibliotheque, int idEdition) {
+        int count = eR.findCountOfExemplaireByEdition(idBibliotheque, idEdition);
+        return count;
+    }
 
-	public Optional<Exemplaire> getExemplaireById(int id) {
-		Optional<Exemplaire> ex = eR.findById(id);
-		return ex;
-	}
+    public Optional<Exemplaire> getExemplaireById(int id) {
+        Optional<Exemplaire> ex = eR.findById(id);
+        return ex;
+    }
 
-	public Exemplaire saveExemplaire(Exemplaire exemplaire, int idBibliotheque){
-		Bibliotheque b = bR.findById(idBibliotheque).get();
-		exemplaire.setBibliotheque(b);
-		return eR.save(exemplaire);
-	}
+    public Exemplaire saveExemplaire(Exemplaire exemplaire, int idBibliotheque) {
+        Bibliotheque b = bR.findById(idBibliotheque).get();
+        exemplaire.setBibliotheque(b);
+        return eR.save(exemplaire);
+    }
 
-	public Exemplaire getOneExemplaireByEdition(String idEdition) {
-		return eR.findOneExemplaireByEdition(idEdition);
-	}
+    public Exemplaire getOneExemplaireByEdition(String idBibliotheque, String idEdition) {
+        System.out.println(idBibliotheque + idEdition);
+        return eR.findOneExemplaireByEdition(idBibliotheque, idEdition);
+    }
 }
 

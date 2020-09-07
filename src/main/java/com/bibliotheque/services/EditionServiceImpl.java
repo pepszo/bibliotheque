@@ -19,6 +19,7 @@ public class EditionServiceImpl {
         List<Edition> editions = new ArrayList<>(eR.findByOeuvre(id));
         return editions;
     }
+
     public Optional<Edition> getEditionById(int id) {
         Optional<Edition> ed = eR.findById(id);
         return ed;

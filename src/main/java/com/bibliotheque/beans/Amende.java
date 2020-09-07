@@ -6,15 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 public class Amende {
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "idAmende", nullable=false)
+    @Column(name = "idAmende", nullable = false)
     private int idAmende;
 
-    @Column(name="motif")
+    @Column(name = "motif")
     private String motif;
 
-    @Column(name="montant")
+    @Column(name = "montant")
     private Float montant;
 
 }

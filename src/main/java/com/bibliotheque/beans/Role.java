@@ -7,17 +7,17 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name ="Roles")
+@Table(name = "Roles")
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "idRole")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "idRole", nullable=false)
+    @Column(name = "idRole", nullable = false)
     private int idRole;
 
-    @Column(name="label")
+    @Column(name = "label")
     private String label;
 
     public int getIdRole() {

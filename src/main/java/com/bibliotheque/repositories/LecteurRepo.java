@@ -14,6 +14,6 @@ public interface LecteurRepo extends CrudRepository<Lecteur, Integer> {
     int findiDByEmail(String emailLecteur);
 
     @Query(value = "select * from lecteurs where email = ?1", nativeQuery = true)
-    Optional<Lecteur>findByEmail(String emailLecteur);
+    Optional<Lecteur> findByEmail(String emailLecteur);
 
 }

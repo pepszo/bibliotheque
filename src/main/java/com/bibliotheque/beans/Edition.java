@@ -10,71 +10,70 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name ="Editions")
+@Table(name = "Editions")
 @JsonIdentityInfo(
-		generator = ObjectIdGenerators.PropertyGenerator.class,
-		property = "idEdition",
-		scope = Edition.class)
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "idEdition",
+        scope = Edition.class)
 public class Edition {
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "idEdition", nullable=false)
+    @Column(name = "idEdition", nullable = false)
     private int idEdition;
 
-    @Column(name="nomEditeur")
+    @Column(name = "nomEditeur")
     private String nomEditeur;
 
-    @Column(name="dateEdition")
+    @Column(name = "dateEdition")
     private Date dateEdition;
 
-	@OneToMany(mappedBy = "edition", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	public Set<Exemplaire> exemplaire;
+    @OneToMany(mappedBy = "edition", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    public Set<Exemplaire> exemplaire;
 
-	@ManyToOne(cascade = {CascadeType.MERGE})
-	@JoinColumn(name = "idOeuvre")
-	private Oeuvre oeuvre;
+    @ManyToOne(cascade = {CascadeType.MERGE})
+    @JoinColumn(name = "idOeuvre")
+    private Oeuvre oeuvre;
 
-    
-	public int getIdEdition() {
-		return idEdition;
-	}
 
-	public void setIdEdition(int idEdition) {
-		this.idEdition = idEdition;
-	}
+    public int getIdEdition() {
+        return idEdition;
+    }
 
-	public Date getDateEdition() {
-		return dateEdition;
-	}
+    public void setIdEdition(int idEdition) {
+        this.idEdition = idEdition;
+    }
 
-	public void setDateEdition(Date dateEdition) {
-		this.dateEdition = dateEdition;
-	}
+    public Date getDateEdition() {
+        return dateEdition;
+    }
 
-	public String getNomEditeur() {
-		return nomEditeur;
-	}
+    public void setDateEdition(Date dateEdition) {
+        this.dateEdition = dateEdition;
+    }
 
-	public void setNomEditeur(String nomEditeur) {
-		this.nomEditeur = nomEditeur;
-	}
+    public String getNomEditeur() {
+        return nomEditeur;
+    }
 
-	public Set<Exemplaire> getExemplaire() {
-		return exemplaire;
-	}
+    public void setNomEditeur(String nomEditeur) {
+        this.nomEditeur = nomEditeur;
+    }
 
-	public void setExemplaire(Set<Exemplaire> exemplaire) {
-		this.exemplaire = exemplaire;
-	}
+    public Set<Exemplaire> getExemplaire() {
+        return exemplaire;
+    }
 
-	public Oeuvre getOeuvre() {
-		return oeuvre;
-	}
+    public void setExemplaire(Set<Exemplaire> exemplaire) {
+        this.exemplaire = exemplaire;
+    }
 
-	public void setOeuvre(Oeuvre oeuvre) {
-		this.oeuvre = oeuvre;
-	}
+    public Oeuvre getOeuvre() {
+        return oeuvre;
+    }
 
+    public void setOeuvre(Oeuvre oeuvre) {
+        this.oeuvre = oeuvre;
+    }
 
 
 }

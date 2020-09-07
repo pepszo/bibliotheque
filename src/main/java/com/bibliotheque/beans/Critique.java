@@ -6,14 +6,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 public class Critique {
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "idCritique", nullable=false)
+    @Column(name = "idCritique", nullable = false)
     private int idCritique;
 
-    @Column(name="commentaire")
+    @Column(name = "commentaire")
     private String commentaire;
 
-    @Column(name="note")
+    @Column(name = "note")
     private Float note;
 }

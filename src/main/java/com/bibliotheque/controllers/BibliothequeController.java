@@ -14,21 +14,23 @@ import java.util.Set;
 @RequestMapping(path = "/bibliotheque")
 public class BibliothequeController {
 
-	@Autowired
-	private BibliothequeServiceImpl bSI;
-	
-	@GetMapping("/all")
-	public List<Bibliotheque> allBibliotheque(){
-		return bSI.getAllBibliotheque();
-	}
+    @Autowired
+    private BibliothequeServiceImpl bSI;
 
-	@GetMapping("/{id}")
-	public Optional<Bibliotheque> getBibliothequeByid(@PathVariable int id) {
-		Optional<Bibliotheque> biblio = bSI.getBibliothequeById(id);
-		return biblio;
-	}
+    @GetMapping("/all")
+    public List<Bibliotheque> allBibliotheque() {
+        return bSI.getAllBibliotheque();
+    }
 
-	@PostMapping("/new")
-	private Bibliotheque newBiblio(@RequestBody Bibliotheque bibliotheque) { return bSI.saveBibliotheque(bibliotheque);}
+    @GetMapping("/{id}")
+    public Optional<Bibliotheque> getBibliothequeByid(@PathVariable int id) {
+        Optional<Bibliotheque> biblio = bSI.getBibliothequeById(id);
+        return biblio;
+    }
+
+    @PostMapping("/new")
+    private Bibliotheque newBiblio(@RequestBody Bibliotheque bibliotheque) {
+        return bSI.saveBibliotheque(bibliotheque);
+    }
 
 }
